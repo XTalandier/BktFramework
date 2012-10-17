@@ -55,7 +55,7 @@ class Bkt_Form {
 	 * @param mixed  $defaut
 	 * @return mixed
 	 */
-	public static function get($item , $defaut = '' , $escape = false){
+	public static function get($item , $defaut = '' , $escape = true){
 		if(isset($_GET[$item])){
 			return $escape ? Bkt_Table::escape($_GET[$item]) : $_GET[$item];
 		}elseif(isset($_POST[$item])){
