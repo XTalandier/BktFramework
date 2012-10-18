@@ -61,6 +61,7 @@ class Bkt_Template {
 			include 'bkt.stream://'.$this->_fichier;
 			$this->_html = ob_get_contents();
 			ob_clean();
+			ob_end_flush ();
 			return $this->_html;
 		}
 	}

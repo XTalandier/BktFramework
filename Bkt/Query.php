@@ -136,5 +136,9 @@ class Bkt_Query {
 		return $this;
 	}
 	
+	public function exec(){
+		return Bkt_Table::getInstance()->executeS($this);
+	}
+	
 }
 
