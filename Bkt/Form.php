@@ -107,6 +107,16 @@ class Bkt_Form {
 			$_POST[$item] = $value;
 		}
 	}
+	
+	/**
+	 * Check if form is posted
+	 * @return bool
+	 */
+	public static function isPosted(){
+		return count($_POST) > 0;
+	}
+	
+	
 	public function __toString(){
 		return self::get($this->_nom);
 	}
