@@ -15,6 +15,11 @@
  * @copyright  Copyright (c) 2010-2011 Xavier Talandier. (xavier.talandier@gmail.com)
  * @license   New BSD License
  */
+
+define('_VALIDATEUR_ALPHABET_ALPHA_'     , 'alpha');
+define('_VALIDATEUR_ALPHABET_NUM_'       , 'num');
+define('_VALIDATEUR_ALPHABET_ALPHANUM_'  , 'alphanum');
+define('_VALIDATEUR_ALPHABET_ALPHANUMS_' , 'alphanums');
 class Bkt_Validateur {
 
 	/**
@@ -49,16 +54,18 @@ class Bkt_Validateur {
 	 * @return bool
 	 */
 	public static function validateur_alphabet($alphabet , $valeur){
-		$alplabet = '';
 		switch($alphabet){
-			case 'alpha':
-				$alphabet = 'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN��u��';
+			case _VALIDATEUR_ALPHABET_ALPHA_:
+				$alphabet = 'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN';
 				break;
-			case 'num':
+			case _VALIDATEUR_ALPHABET_ALPHANUM_:
 				$alphabet = '1234567890';
 				break;
-			case 'alphanum':
-				$alphabet = 'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN��u��1234567890';
+			case _VALIDATEUR_ALPHABET_ALPHANUM_:
+				$alphabet = 'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN1234567890';
+				break;
+			case _VALIDATEUR_ALPHABET_ALPHANUMS_:
+				$alphabet = 'azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN1234567890 .,_-';
 				break;
 		}
 		$n = strlen($valeur);
@@ -93,10 +100,18 @@ class Bkt_Validateur {
 	/**
 	 * Vérifie qu'une chaine fait + de 5 caractères
 	 * @param $valeur Chaine à valider
-	 * @return unknown_type
+	 * @return bool
 	 */
 	public static function validateur_plusgrand5($valeur){
 		return (strlen($valeur) > 5);
+	}
+	/**
+	 * Vérifie qu'une chaine fait + de n caractères
+	 * @param $valeur Chaine à valider
+	 * @return bool
+	 */
+	public static function validateur_plusgrandN($valeur , $n){
+		return (strlen($valeur) > $n);
 	}
 	
 	/**

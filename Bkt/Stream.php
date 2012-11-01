@@ -51,6 +51,7 @@ class Bkt_Stream {
          */
         $this->_data = preg_replace('/\<\?\=/'          , "<?php echo "  , $this->_data);
         $this->_data = preg_replace('/<\?(?!xml|php)/s' , '<?php '       , $this->_data);
+        $this->_data = Bkt_Tags::parse($this->_data);
 		// Custom functions
 		$n = count(self::$_functions);
 		for($i = 0 ; $i < $n ; $i++){
