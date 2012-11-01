@@ -14,7 +14,7 @@ class Bkt_Tags {
 	 * @return string Parsed data
 	 */
 	public static function parse($data){
-		preg_match_all('/<bkt:([a-zA-Z]*):([a-zA-Z0-9]*)([^>]*)\/>/im', $data, $result);
+		preg_match_all('/<bkt:([a-zA-Z]*):([a-zA-Z0-9]*)([^\/]*)\/>/im', $data, $result);
 		if(!isset($result[0][0])){
 			return $data;
 		}
