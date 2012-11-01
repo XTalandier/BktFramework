@@ -24,8 +24,8 @@ class Bkt_Tags {
 			$name   = $result[2][$i];
 			$params = $result[3][$i];
 			$value  = $type == 'text' ? (isset($_POST[$name]) ? $_POST[$name] : '') : '';
-			$tag = sprintf('<input type="%s" name="%s" id="%s" %s value="%s" />' , $type , $name , $name , $params , $value);
-			$data = str_replace($result[0][$i], $tag, $data);
+			$tag    = sprintf('<input type="%s" name="%s" id="%s" %s value="%s" />' , $type , $name , $name , $params , $value);
+			$data   = str_replace($result[0][$i], $tag, $data);
 		}
 		return $data;
 	}
