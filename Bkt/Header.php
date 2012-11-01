@@ -54,7 +54,7 @@ class Bkt_Header {
 		for($i = 0 ; $i < $n ; $i++){
 			$html.= '<meta name="'.$this->_meta[$i]['name'].'" src="'.$this->_meta[$i]['value'].'" />';
 		}
-		$html.= '<title>'.Bkt_Config::$_conf->params->title.($this->title == '' ? '' : ' - ').$this->_title.'</title>';
+		$html.= '<title>'.Bkt_Config::$_conf->params->title.($this->_title == '' ? '' : ' - ').$this->_title.'</title>';
 		return $html;
 	}
 }

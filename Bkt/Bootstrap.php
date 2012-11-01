@@ -142,9 +142,11 @@ class Bkt_Bootstrap {
 		}
 		
 		if(is_null($objet->layout)){
+			$objet->view->header  = $objet->header;
 			echo $objet->view->getString();
 		}else{
-			// On insére la vue dans le layout
+			// On insére la vue dans le layout ainsi que le header
+			$objet->layout->header  = $objet->header;
 			$objet->layout->content = $objet->view->getString();
 			// On affiche le layout
 			echo $objet->layout->getString();
