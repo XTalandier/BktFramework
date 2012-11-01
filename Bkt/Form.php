@@ -115,8 +115,7 @@ class Bkt_Form {
 	public static function isPosted(){
 		return count($_POST) > 0;
 	}
-	
-	
+
 	public function __toString(){
 		return self::get($this->_nom);
 	}

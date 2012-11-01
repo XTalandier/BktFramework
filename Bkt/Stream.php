@@ -21,9 +21,9 @@ class Bkt_Stream {
      */
     protected $_stat;
 
-    private $_functions = array();
-    public function addFunction($fonc){
-    	array_push($this->_functions , $fonc);
+    private static $_functions = array();
+    public static function addFunction($pattern , $fonc){
+    	array_push(self::$_functions, array('pattern' => $pattern , 'function' => $fonc));
     }
     
     
@@ -51,7 +51,11 @@ class Bkt_Stream {
          */
         $this->_data = preg_replace('/\<\?\=/'          , "<?php echo "  , $this->_data);
         $this->_data = preg_replace('/<\?(?!xml|php)/s' , '<?php '       , $this->_data);
-        $this->_data = preg_replace('/\s_t\(/'          , " Bkt_Trad::t(__FILE__ , "  , $this->_data);
+		// Custom functions
+		$n = count(self::$_functions);
+		for($i = 0 ; $i < $n ; $i++){
+	        $this->_data = preg_replace('/'.self::$_functions[$i]['pattern'].'/' , self::$_functions[$i]['function'], $this->_data);
+		}
         /**
          * file_get_contents() won't update PHP's stat cache, so we grab a stat
          * of the file to prevent additional reads should the script be

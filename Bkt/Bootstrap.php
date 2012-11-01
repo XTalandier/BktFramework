@@ -49,12 +49,14 @@ class Bkt_Bootstrap {
 
 	public function __construct(){}
 	public static   $requestParams;
+	public static $instance;
 	/**
 	 * Exécute l'application
 	 */
 	public function run(){
 		session_start();
 		global $url;
+		Bkt_Bootstrap::$instance = $this;
 		$parts = explode('/', $_SERVER['REQUEST_URI']);
 		array_shift($parts);
 		// Enleve le premier element
@@ -168,9 +170,9 @@ class Bkt_Bootstrap {
 	 */
 	public function endDispatch(){}
 
-	public function changeLayout($layout){
+	public static function changeLayout($layout){
 		global $url;
-		return new Bkt_Template($url."Layout/$layout.".Bkt_Config::$_conf->template->extension);
+		self::$instance->layout = new Bkt_Template($url."Layout/$layout.".Bkt_Config::$_conf->template->extension);
 	}
 	
 	public static function getParam($item , $default = null , $index = null){
@@ -186,4 +188,7 @@ class Bkt_Bootstrap {
 		}
 	}
 	
+	public function route($route , $controller , $action , Bkt_Request &$request){
+		return $request;
+	}
 }

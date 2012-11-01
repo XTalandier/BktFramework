@@ -106,8 +106,8 @@ class Bkt_Validateur {
 	 */
 	public static function validateur_isDate($valeur){
 		try{
-			$aDate_parts = preg_split("/[\s-]+/", $valeur);
-			return count($aDate_parts == 3) ? false : checkdate(
+			$aDate_parts = explode("/", $valeur);
+			return count($aDate_parts) != 3 ? false : checkdate(
 				$aDate_parts[1], // Month
 				$aDate_parts[0], // Day
 				$aDate_parts[2] // Year

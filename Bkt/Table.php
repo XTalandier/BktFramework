@@ -61,7 +61,7 @@ class Bkt_Table extends Bkt_Db {
 	
 	public function delete($id){
 		$sql = "DELETE FROM $this->_name WHERE $this->_primary = '".mysql_escape_string($id)."'";
-		echo $sql;
+		//echo $sql;
 		$this->execute($sql);
 	}
 	
@@ -72,7 +72,7 @@ class Bkt_Table extends Bkt_Db {
 	 */
 	public function isUnique($champ , $valeur){
 		$foo = $this->select($this->_primary , new Where($champ.' = "'.self::escape($valeur).'"'));
-		return (count($foo) > 0) ? false : true;
+		return (count($foo) == 0);
 	}
 	
 	/**
@@ -103,7 +103,7 @@ class Bkt_Table extends Bkt_Db {
 		$res = mysql_query($sql);
 		if($count){
 			$foo = mysql_query('SELECT FOUND_ROWS() as nb;');
-			$aa = mysql_fetch_assoc($foo);
+			$aa  = mysql_fetch_assoc($foo);
 			$this->_count = $aa['nb'];
 		}
 		$ret = array();

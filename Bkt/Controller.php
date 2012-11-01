@@ -30,12 +30,21 @@ class Bkt_Controller {
 	public $request = null;
 	
 	public static $_base = '';
+	
+	/**
+	 *
+	 * @var Bkt_Header
+	 */
+	public $header;
+	
+	
 	/**
 	 * Initialisation du controller
 	 */
 
 	public function __construct(){
 		self::$_base = Bkt_Config::$_conf->params->base;
+		$this->header = new Bkt_Header();
 	}
 	public function init(){}
 

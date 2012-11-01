@@ -16,6 +16,7 @@
  * @license   New BSD License
  */
 class Bkt_Trad {
+	public static $lang = 'fr';
 	/**
 	 * Traduit une chaine
 	 * @param $item

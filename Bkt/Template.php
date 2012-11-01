@@ -15,7 +15,7 @@
  * @copyright  Copyright (c) 2010-2011 Xavier Talandier. (xavier.talandier@gmail.com)
  * @license   New BSD License
  */
-class Bkt_Template {
+class Bkt_Template extends Bkt_Stream {
 
 	public static $_type = 'normal'; // OR SMARTY
 	
