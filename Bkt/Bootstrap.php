@@ -81,10 +81,9 @@ class Bkt_Bootstrap {
 		for($i = 2 ; $i < count($parts) ; $i+= 2){
 			$request_array['variables'][$parts[$i]] = isset($parts[$i + 1]) ? $parts[$i + 1] : '';
 		}
-		// Création de l'objet représentatif de la requéte
-		$request = new Bkt_Request($request_array);
+
 		// On fait appel é la fonction de pré-affichage
-		$request = $this->preDispatch($request);
+		$request = $this->preDispatch(new Bkt_Request($request_array));
 
 		self::$requestParams = $request->variables;
 		// On va créer le controller
