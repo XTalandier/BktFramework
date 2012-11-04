@@ -136,8 +136,14 @@ class Bkt_Query {
 		return $this;
 	}
 	
-	public function exec(){
-		return Bkt_Table::getInstance()->executeS($this);
+	/**
+	 * Execute the query
+	 * @param int $elem Element to return. null: all the query, int: The $ELEM element
+	 * @return Array
+	 */
+	public function exec($elem = null){
+		$ret = Bkt_Table::getInstance()->executeS($this);
+		return is_null($elem) ? $ret : $ret[$elem];
 	}
 	
 }
