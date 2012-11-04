@@ -23,8 +23,12 @@ class Bkt_Tags {
 			$type   = strtolower($result[1][$i]);
 			$name   = $result[2][$i];
 			$params = $result[3][$i];
-			$value  = $type == 'text' ? (isset($_POST[$name]) ? $_POST[$name] : '') : '';
-			$tag    = sprintf('<input type="%s" name="%s" id="%s" %s value="%s" />' , $type , $name , $name , $params , $value);
+			$value  = $type == 'password' ? '' : (isset($_POST[$name]) ? $_POST[$name] : '') ;
+			if($type == 'textarea'){
+				$tag = sprintf('<textarea name="%s" id="%s" %s>%s</textarea/>' , $name , $name , $params , $value);
+			}else{
+				$tag    = sprintf('<input type="%s" name="%s" id="%s" %s value="%s" />' , $type , $name , $name , $params , $value);
+			}
 			$data   = str_replace($result[0][$i], $tag, $data);
 		}
 		return $data;
