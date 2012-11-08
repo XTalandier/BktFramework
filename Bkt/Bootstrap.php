@@ -123,6 +123,9 @@ class Bkt_Bootstrap {
 					)
 				);
 			}else{
+				echo "<pre>";
+				print_r($request);
+				exit;
 				$objet = new Controller_ErreurController();
 				$objet->layout = $request->layout;
 				$objet->view   = new Bkt_Template($url.'View/erreur/erreur404.'.Bkt_Config::$_conf->template->extension);

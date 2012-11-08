@@ -137,6 +137,33 @@ class Bkt_Query {
 	}
 	
 	/**
+	 * Update statement
+	 * @param string $table Table to update
+	 */
+	public function Update($table){
+		$this->_query = "UPDATE $table ";
+		return $this;
+	}
+	
+	/**
+	 * Set for updating
+	 * @param array|string $champs Champs à mettre à jours
+	 */
+	public function SET($champs){
+		if(is_array($champs)){
+			$this->_query .= " SET ";
+			$n = count($champs);
+			for($i = 0 ; $i < $n ; $i++){
+				$this->_query .= " $champs[$i],";
+			}
+			$this->_query = trim($this->_query , ',');
+		}else{
+			$this->_query .= " SET $champs ";
+		}
+		return $this;
+	}
+		
+	/**
 	 * Execute the query
 	 * @param int $elem Element to return. null: all the query, int: The $ELEM element
 	 * @return Array
@@ -145,6 +172,15 @@ class Bkt_Query {
 		$ret = Bkt_Table::getInstance()->executeS($this);
 		return is_null($elem) ? $ret : $ret[$elem];
 	}
-	
+	/**
+	 * Execute the query
+	 * @param int $elem Element to return. null: all the query, int: The $ELEM element
+	 * @return bool
+	 */
+	public function save(){
+		return Bkt_Table::getInstance()->execute($this);
+	}
+
+
 }
 
