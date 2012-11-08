@@ -26,7 +26,7 @@ class Bkt_Objet {
 	 * @param array $array permet de stocker par d�faut des �l�ments
 	 * @param bool $iterator Si TRUE, alors on pourra parcourir les �l�ments de l'objet
 	 */
-	public function __construct(array $array = array() , $iterator = false){
+	public function  __construct(array $array = array() , $iterator = false){
 		$this->_datas    = $array;
 		$this->_iterator = $iterator;
 	}
