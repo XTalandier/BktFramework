@@ -16,8 +16,9 @@
  * @license   New BSD License
  */
 class Bkt_Controller {
+	
 	/**
-	 * @var string La vue
+	 * @var Bkt_Template
 	 */
 	public $view   = null;
 	/**
