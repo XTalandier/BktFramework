@@ -162,7 +162,7 @@ class Bkt_Query {
 		}
 		return $this;
 	}
-		
+	
 	/**
 	 * Execute the query
 	 * @param int $elem Element to return. null: all the query, int: The $ELEM element
